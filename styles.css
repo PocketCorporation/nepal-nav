@@ -10,12 +10,16 @@ body{
     background:linear-gradient(#f1f3ff,#cbd4ff);
 }
 .sidebar{
-    psoition:fixed;
+    position:fixed;
     top:0;
     left:0;
     width: 260px;
     height: 100vh;
-    background:#151a2e;;
+    background:#151a2e;
+    transition:all 0.4s ease;;
+}
+.sidebar.collapsed{
+    width:85px;
 }
 .sidebar .sidebar-header{
     display:flex;
@@ -47,6 +51,9 @@ body{
 .sidebar-header .sidebar-toggler:hover{
     background:#d9e1fd;
 }
+.sidebar.collapsed .sidebar-toggler{
+    transform:translate(-4px,65px)
+}
 .sidebar-header .sidebar-toggler span{
     font-size: 1.75rem;
 }
@@ -62,14 +69,33 @@ body{
     color:#fff;
     display: flex;
     gap:12px;
+    white-space:nowrap;
     padding:11px 15px;
     align-items: center;
     text-decoration: none;
     border-radius: 8px;
     border:1px solid #151a2e;
-    transition:0.4s ease
+    transition:0.4s ease;
+}
+.sidebar.collapsed .sidebar-nav .primary-nav{
+    transform: translateY(65px);
 }
 .sidebar-nav .nav-item:hover > .nav-link{
     color: #151a2e;
     background: #eef2ff;
+}
+.sidebar-nav .secondary-nav{
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    background:#151a2e;
+}
+.sidebar.collapsed .nav-link .nav-label{
+    opacity:0;
+    pointer-events: none;
+}
+
+
+.sidebar-nav .nav-link .nav-label{
+    transition: opacity 0.3 ease;
 }
