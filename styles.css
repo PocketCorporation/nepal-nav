@@ -16,10 +16,7 @@ body{
     width: 260px;
     height: 100vh;
     background:#151a2e;
-    transition:all 0.4s ease;;
-}
-.sidebar.collapsed{
-    width:85px;
+    transition:all 0.4s ease;
 }
 .sidebar .sidebar-header{
     display:flex;
@@ -51,9 +48,7 @@ body{
 .sidebar-header .sidebar-toggler:hover{
     background:#d9e1fd;
 }
-.sidebar.collapsed .sidebar-toggler{
-    transform:translate(-4px,65px);
-}
+
 .sidebar-header .sidebar-toggler span{
     font-size: 1.75rem;
 }
@@ -78,9 +73,6 @@ body{
     border:1px solid #151a2e;
     transition:0.4s ease;
 }
-.sidebar.collapsed .sidebar-nav .primary-nav{
-    transform: translateY(65px);
-}
 .sidebar-nav .nav-item:hover > .nav-link{
     color: #151a2e;
     background: #eef2ff;
@@ -91,16 +83,70 @@ body{
     width: 100%;
     background:#151a2e;
 }
-.sidebar.collapsed .nav-link .nav-label{
-    opacity:0;
-    pointer-events: none;
-}
-
 
 .sidebar-nav .nav-link .nav-label{
     transition: opacity 0.3 ease;
 }
 
+
+/* .sidebar.collapsed */
+.sidebar.collapsed{
+    width:85px;
+}
+.sidebar.collapsed .sidebar-toggler{
+    transform:translate(-4px,65px);
+}
+.sidebar.collapsed .sidebar-nav .primary-nav{
+    transform: translateY(65px);
+}
+.sidebar.collapsed .nav-link .nav-label{
+    opacity:0;
+    pointer-events: none;
+}
 .sidebar.collapsed .sidebar-toggler span{
     transform: rotate(180deg);
+}
+
+
+/* dropdown styling */
+.sidebar-nav .nav-item{
+    position: relative;
+}
+
+.sidebar-nav .dropdown-container .dropdown-icon{
+    margin: 0 -4px 0 auto;
+}
+.sidebar-nav .dropdown-menu{
+    list-style: style none;
+    padding-left: 15px;
+}
+.sidebar.collapsed .dropdown-menu{
+    position: absolute;
+    left:100%;
+    top: -10px;
+    opacity:0;
+    pointer-events: none;
+    background:#151a2e;
+    padding: 7px 10px 7px 24px;
+    border-radius:0 10px 10px 0;
+    transition:0;
+}
+.dropdown-menu .nav-item .nav-link{
+    padding: 9px 15px;
+}
+.sidebar.collapsed .dropdown-menu nav.link{
+    padding: 7px 15px;
+}
+.dropdown-menu .nav-item .dropdown-title{
+    display: none;
+    font-weight: 500;
+}
+.sidebar.collapsed .dropdown-menu .nav-item .dropdown-title{
+    display:block;
+}
+.sidebar.collapsed .nav-item:hover .dropdown-menu{
+    opacity:1;
+    pointer-events: auto;
+    transform:translateY(10px);
+    transition:0.4s ease;
 }
