@@ -44,6 +44,7 @@ body{
     justify-content: center;
     border-radius: 8px;
     background: #eef2ff;
+    transition:0.4s ease;
 }
 .sidebar-header .sidebar-toggler:hover{
     background:#d9e1fd;
@@ -51,6 +52,7 @@ body{
 
 .sidebar-header .sidebar-toggler span{
     font-size: 1.75rem;
+    transition:0.4s ease;
 }
 .sidebar-nav .nav-list{
     list-style: none;
@@ -83,8 +85,7 @@ body{
     width: 100%;
     background:#151a2e;
 }
-
-.sidebar-nav .nav-link .nav-label{
+.sidebar-nav .nav-link :where(.nav-label, .dropdown-icon){
     transition: opacity 0.3 ease;
 }
 
@@ -99,25 +100,29 @@ body{
 .sidebar.collapsed .sidebar-nav .primary-nav{
     transform: translateY(65px);
 }
-.sidebar.collapsed .nav-link .nav-label{
+.sidebar.collapsed .nav-link :where(.nav-label, .dropdown-icon){
     opacity:0;
     pointer-events: none;
 }
 .sidebar.collapsed .sidebar-toggler span{
     transform: rotate(180deg);
 }
-
+.sidebar.collapsed .dropdown-container .dropdown-icon{
+    transition:transform 0.3 0 ease;
+}
 
 /* dropdown styling */
 .sidebar-nav .nav-item{
     position: relative;
 }
-
 .sidebar-nav .dropdown-container .dropdown-icon{
     margin: 0 -4px 0 auto;
+    transition:transform 0.4s ease, opacity 0.3s 0.2s ease;
 }
 .sidebar-nav .dropdown-menu{
-    list-style: style none;
+    height:0;
+    overflow-y:hidden;
+    list-style: none;
     padding-left: 15px;
 }
 .sidebar.collapsed .dropdown-menu{
@@ -125,6 +130,8 @@ body{
     left:100%;
     top: -10px;
     opacity:0;
+    height:auto;
+    overflow-y:unset;
     pointer-events: none;
     background:#151a2e;
     padding: 7px 10px 7px 24px;
